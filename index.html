@@ -64,33 +64,33 @@
     </div>
 
     <script>
-console.log("Website dev: Scott | YT: https://www.youtube.com/channel/UCXbosgp_Nla2l6V7tRj5L9A  | Mail: scott.guldbaek@gmail.com");
-
+        console.log("Website dev: Scott | YT: https://www.youtube.com/channel/UCXbosgp_Nla2l6V7tRj5L9A  | Mail: scott.guldbaek@gmail.com");
+        
         window.addEventListener('load', function() {
             var audio = document.getElementById('background-audio');
             var playPromise = audio.play();
             var currentTimeElement = document.getElementById('current-time');
             var highscoreElement = document.getElementById('highscore');
             var startText = document.getElementById('start-text');
-
+        
             var currentTime = 0;
-            var highscore = localStorage.getItem('highscore') || 0;
-
+            var highscore = localStorage.getItem('highscore1') || 0;
+        
             highscoreElement.textContent = highscore;
-
+        
             function updateTimer() {
                 currentTime++;
                 currentTimeElement.textContent = currentTime;
-
+        
                 if (currentTime > highscore) {
                     highscore = currentTime;
                     highscoreElement.textContent = highscore;
-                    localStorage.setItem('highscore', highscore);
+                    localStorage.setItem('highscore1', highscore);
                 }
             }
-
+        
             var timerInterval;
-
+        
             if (playPromise !== undefined) {
                 playPromise.then(function() {
                     timerInterval = setInterval(updateTimer, 1000);
@@ -103,14 +103,15 @@ console.log("Website dev: Scott | YT: https://www.youtube.com/channel/UCXbosgp_N
                     }, {once: true});
                 });
             }
-
+        
             window.addEventListener('beforeunload', function() {
                 clearInterval(timerInterval);
                 if (currentTime > highscore) {
-                    localStorage.setItem('highscore', currentTime);
+                    localStorage.setItem('highscore1', currentTime);
                 }
             });
         });
-    </script>
+        </script>
+        
 </body>
 </html>
